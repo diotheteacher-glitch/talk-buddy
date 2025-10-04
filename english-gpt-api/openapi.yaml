@@ -1,0 +1,37 @@
+openapi: 3.1.0
+info:
+  title: Start Session
+  version: "1.0"
+servers:
+  - url: https://YOUR-PROJECT.vercel.app   # ← Replace with your deployed base URL
+paths:
+  /api/start-session:
+    post:
+      operationId: startSession
+      summary: Start voice speaking session with selected options
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                gender:     { type: string, enum: [man, woman] }
+                age_group:  { type: string, enum: [kid, teen, adult] }
+                level:      { type: string, enum: [A1, A2, B1, B2, C1, C2] }
+                voice:      { type: string, enum: [johnny, jill] }
+                topic:
+                  type: string
+                  enum: [cafe, travel, hotel, phone, health, hobbies, films, shopping, directions, weather, interview, school, dating, friends, presentation, sports, gossip, finance, music, tech]
+                mode:       { type: string, enum: [roleplay, qa, shadowing, free] }
+              required: [gender, age_group, level, voice, topic, mode]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:       { type: boolean }
+                  received: { type: object }
