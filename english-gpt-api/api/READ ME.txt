@@ -1,0 +1,7 @@
+read me
+
+English GPT Session API
+
+This repository provides a tiny serverless API endpoint that powers a Custom GPT Action.
+The GPT Action shows users clickable options (gender, age group, English level, voice, topic, and conversation mode) and sends them here.
+The endpoint simply echoes back the chosen options so the GPT can start the English speaking session.
